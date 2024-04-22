@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="app.css">
+    <script type="module" src="app.mjs" defer></script>
+    <title>Colors</title>
+</head>
+<body>
+    <div id="main-container">
+        <form action="#">
+            <input id="search-input" name="search-input" type="text" placeholder="e.g pink, royal blue..." required/>
+            <button id="search-btn" type="submit">Display</button>
+        </form>
+        <div id="input-color-display"></div>
+        <p id="input-color-name"></p>
+        <hr>
+        <div id="color-modifier-container">
+            <label for="color-modifier-factor">Brightness(%):</label>
+            <input name="color-modifier-factor" id="color-modifier-factor" 
+                type="number" min="0" max="100" step="5" title="color modifier factor, in percentages"
+                placeholder="5, 10, ..."
+            />
+        </div>
+        <div id="modified-color-details">
+            <p>Name:&nbsp;<span class="info"></span></p>
+            <p>RGB:&nbsp;&nbsp;&nbsp;<span class="info"></span></p>
+            <p>HSL:&nbsp;&nbsp;&nbsp;<span class="info"></span></p>
+        </div>
+    </div>
+</body>
+</html>

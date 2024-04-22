@@ -1,0 +1,134 @@
+body {
+  background-color: #141414;
+}
+body div#main-container {
+  min-width: 250px;
+  max-height: 80vh;
+  margin: 10px auto;
+  padding: 5% 0;
+  border-radius: 25%;
+  background-color: #1a1a1a;
+  font-family: "Fira Code", Helvetice, sans-serif;
+  font-size: 12px;
+}
+@media screen and (width > 576px) {
+  body div#main-container {
+    width: 70vh;
+  }
+}
+body div#main-container * {
+  box-sizing: border-box;
+}
+body div#main-container form {
+  min-width: 200px;
+  width: 60%;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+}
+body div#main-container form input#search-input {
+  width: 60%;
+  height: 40px;
+  border: none;
+  border-radius: 20% 0 0 20%;
+  padding: 10px;
+  font-weight: 600;
+  background-color: #a6a6a6;
+  letter-spacing: 0.6px;
+}
+body div#main-container form input#search-input:focus {
+  background-color: lightgrey;
+  outline: none;
+  border: none;
+}
+body div#main-container form button#search-btn {
+  width: 40%;
+  height: 40px;
+  background-color: green;
+  color: #1a1a1a;
+  font-weight: bold;
+  border: none;
+  border-radius: 0 20% 20% 0;
+}
+body div#main-container form button#search-btn:hover {
+  background-color: #00b300;
+  color: #1a1a1a;
+}
+body div#input-color-display {
+  width: 100px;
+  height: 100px;
+  margin: 10% auto 5%;
+  padding: 10%;
+  border: solid white 3px;
+  border-radius: 50%;
+  outline: dashed gray 5px;
+  background-color: white;
+  justify-content: center;
+  font-weight: bold;
+  color: white;
+}
+body div#input-color-display + p {
+  text-align: center;
+  font-weight: bold;
+  color: white;
+  margin-bottom: 20%;
+}
+body p#input-color-name {
+  height: 30px;
+  visibility: hidden;
+  margin: -10px auto 10%;
+}
+body hr {
+  border: 5px solid #0d0d0d;
+  border-radius: 20%;
+  width: 100%;
+  margin: -15% auto 10%;
+}
+body div#color-modifier-container {
+  width: 50%;
+  margin: 0 auto 10%;
+  height: 20px;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 45%));
+  justify-content: center;
+}
+body div#color-modifier-container * {
+  box-sizing: border-box;
+}
+body div#color-modifier-container label, body div#color-modifier-container input {
+  box-sizing: border-box;
+  text-align: center;
+  font-variant: small-caps;
+  font-weight: bold;
+}
+body div#color-modifier-container label {
+  color: #999999;
+  padding: 10px 10px 10px 0;
+}
+body div#color-modifier-container input {
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+  background-color: #595959;
+  outline: none;
+  color: #b3b3b3;
+}
+body div#modified-color-details {
+  background-color: #595959;
+  border-radius: 10px;
+  width: 50%;
+  height: 15%;
+  margin: 70px auto 10%;
+  padding: 10px;
+  outline: solid red 0 0 50px;
+}
+body div#modified-color-details p {
+  font-weight: light;
+  color: #666666;
+}
+body div#modified-color-details p span {
+  font-weight: normal;
+}
+
+/*# sourceMappingURL=app.css.map */
