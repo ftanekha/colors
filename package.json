@@ -1,0 +1,24 @@
+{
+  "name": "colors",
+  "version": "0.0.1",
+  "description": "",
+  "main": "app.mjs",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ftanekha/colors.git"
+  },
+  "keywords": [
+    "colors",
+    "hsl",
+    "rgb"
+  ],
+  "author": "FT",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ftanekha/colors/issues"
+  },
+  "homepage": "https://github.com/ftanekha/colors#readme"
+}

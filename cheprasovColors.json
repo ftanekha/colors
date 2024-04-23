@@ -1,5 +1,33 @@
 [
   {
+    "name": "Black",
+    "hex": "#000"
+  },
+  {
+    "name": "White",
+      "hex": "#FFF"
+  },
+  {
+    "name": "Red",
+      "hex": "#FF0"
+  },
+  {
+    "name": "Blue",
+      "hex": "#00F"
+  },
+  {
+    "name": "Yellow",
+    "hex": "#FF0"
+  },
+  {
+    "name": "Green",
+    "hex": "#0F0"
+  },
+  {
+    "name": "Orange",
+    "hex": "#Ffa500"
+  },
+  {
     "name": "Absolute Zero",
     "hex": "#0048BA"
   },

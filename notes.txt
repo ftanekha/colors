@@ -1,0 +1,18 @@
+Writing BTWN different files
+#####################
+to remove duplicate lines from allColors.mjs, use command line command:
+sort allColors.mjs | uniq > allColorsUniq.mjs
+
+OR (shorthand)
+sort -u allColors.mjs > allColorsUniq.mjs
+.........................................................................
+.........................................................................
+
+Writing to same file
+#####################
+use the 'tee' option
+
+sort file.txt | uniq | tee file.txt 
+
+[OR] (I USED THIS ONE)
+'sort ./allColorsSorted.mjs | uniq > ./allColorsSorted.mjs
