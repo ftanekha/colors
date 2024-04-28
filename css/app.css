@@ -10,6 +10,7 @@ body div#main-container {
   background-color: #1a1a1a;
   font-family: "Fira Code", Helvetice, sans-serif;
   font-size: 12px;
+  filter: drop-shadow(#e23 0 0.35rem 0.25rem);
 }
 @media screen and (width > 576px) {
   body div#main-container {
@@ -152,6 +153,24 @@ body div#modified-color-details p {
 }
 body div#modified-color-details p span {
   font-weight: normal;
+}
+body .spinner {
+  animation-name: spinner;
+  animation-duration: 2s;
+}
+@keyframes spinner {
+  0% {
+    transform: rotate(90deg);
+  }
+  25% {
+    transform: rotate(180deg);
+  }
+  50% {
+    transform: rotate(270deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 /*# sourceMappingURL=app.css.map */

@@ -1,26 +1,38 @@
+import allColorsSortedUniq from '../database/allColorsSortedUniq.json' assert { type: 'json' }
+
 //verify color exists in collection/db
-function isSearchInputColorInDatabase(database, searchColorInput){
-    let searchInputColorHex
-
-    const colorNamesArray = database.map(color => color.name);
-    if(colorNamesArray.indexOf(searchColorInput) > - 1) {
-        searchInputColorHex = colorNamesArray.indexOf(searchColorInput)
-    }
-
-    const colorHexValuesArray = database.map(color => color.hex)
-    if(colorHexValuesArray.indexOf(searchColorInput) > - 1) {
-        searchInputColorHex = colorHexValuesArray.indexOf(searchColorInput)
-    }
-
-    return (
-        searchInputColorHex > -1 ? 
-        (
-            ()=>{
-                console.info('Color input is accepted 😊') 
-                return searchInputColorHex
+function isSearchInputColorInDatabase(colorName){
+    let colorInfo
+    //check that color exists in database
+    const colorNamesArray = allColorsSortedUniq.map(color => color.name)
+    if(colorNamesArray.includes(colorName)) {
+        const colorHexCodeArray = []
+        allColorsSortedUniq.forEach(
+            color => {
+                if(color.name === colorName) colorHexCodeArray.push(color)
             }
-        )() :
-        alert('Invalid color!☹️ Try again 😊')
-    )
+        )
+        colorInfo = colorHexCodeArray
+    }else{
+        colorInfo = 'not found'
+    }
+
+    return colorInfo
+
+    // const colorHexValuesArray = allColorsSortedUniq.map(color => color.hex)
+    // if(colorHexValuesArray.indexOf(colorName) > - 1) {
+    //     searchInputColorHexCode = colorHexValuesArray.indexOf(colorName)
+    // }
+
+    // return (
+    //     searchInputColorHexCode > -1 ? 
+    //     (
+    //         ()=>{
+    //             console.info('Color input is accepted 😊') 
+    //             return searchInputColorHexCode
+    //         }
+    //     )() :
+    //     console.error('Invalid color!☹️ Try again 😊')
+    // )
 }
 export default isSearchInputColorInDatabase

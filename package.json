@@ -20,5 +20,9 @@
   "bugs": {
     "url": "https://github.com/ftanekha/colors/issues"
   },
-  "homepage": "https://github.com/ftanekha/colors#readme"
+  "homepage": "https://github.com/ftanekha/colors#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.19.2"
+  }
 }
