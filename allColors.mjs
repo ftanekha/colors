@@ -1,5 +1,5 @@
-import cheprasovColors from './apiData/cheprasovColors.json' assert { type: 'json' }
-import chrigaColors from './apiData/chrigaColors.json' assert { type: 'json' }
+import cheprasovColors from './apiData/cheprasovColors.json' with { type: 'json' }
+import chrigaColors from './apiData/chrigaColors.json' with { type: 'json' }
 import appendDataToFile from './utilities/appendDataToFile.mjs'
 import sortArrayOfObjects from './utilities/sortArrayOfObjects.mjs'
 import confirmPositiveResult from './utilities/confirmPositiveResult.mjs'
