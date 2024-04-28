@@ -4,8 +4,8 @@ body {
 body div#main-container {
   min-width: 250px;
   max-height: 80vh;
-  margin: 10px auto;
-  padding: 5% 0;
+  margin: 30px auto 0;
+  padding: 20px 0 70px;
   border-radius: 25%;
   background-color: #1a1a1a;
   font-family: "Fira Code", Helvetice, sans-serif;
@@ -19,7 +19,27 @@ body div#main-container {
 body div#main-container * {
   box-sizing: border-box;
 }
+body div#main-container div#pick-a-color {
+  width: 70%;
+  height: 100px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  column-gap: 5%;
+}
+body div#main-container div#pick-a-color p {
+  color: #999999;
+  font-size: 0.65rem;
+  font-weight: 500;
+}
+body div#main-container div#pick-a-color img {
+  float: right;
+  max-width: 40%;
+  height: 70%;
+}
 body div#main-container form {
+  clear: both;
   min-width: 200px;
   width: 60%;
   margin: auto;

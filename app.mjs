@@ -37,7 +37,7 @@ document.addEventListener(
                     .then(response => response.json())
                     .then(data => {
                         const hsl = data.hsl.value
-                        console.log(data)
+                        // console.log(data)
                         //reflect color change
                         modifiedColorDetails.style.borderColor = hsl;
                         if(colorModifierFactor.value == '0') {

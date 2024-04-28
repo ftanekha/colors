@@ -16,11 +16,11 @@ function isSearchInputColorInDatabase(database, searchColorInput){
         searchInputColorHex > -1 ? 
         (
             ()=>{
-                console.info('Initial color input is valid😊') 
+                console.info('Color input is accepted 😊') 
                 return searchInputColorHex
             }
         )() :
-        alert('Invalid color!☹️ Try again😊')
+        alert('Invalid color!☹️ Try again 😊')
     )
 }
 export default isSearchInputColorInDatabase
