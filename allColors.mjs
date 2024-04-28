@@ -1,72 +1,90 @@
-import { appendFile } from 'node:fs/promises'
+
+import cheprasovColors from './apiData/cheprasovColors.json' assert { type: 'json' }
+import chrigaColors from './apiData/chrigaColors.json' assert { type: 'json' }
 import appendDataToFile from './utilities/appendDataToFile.mjs'
-import cheprasovColors from './cheprasovColors.json' assert { type: 'json' }
-import chrigaColors from './chrigaColors.json' assert { type: 'json' }
+// import runCLIcommand from './utilities/runCLIcommand.mjs'
 import sortArrayOfObjects from './utilities/sortArrayOfObjects.mjs'
-import {exec} from 'node:child_process'
+import confirmPositiveResult from './utilities/confirmPositiveResult.mjs'
+import transformSortedObjectArrayToUniqArray from './utilities/transformSortedObjectArrayToUniqArray.mjs'
+import insertArrayBracket from './utilities/insertArrayBracket.mjs'
 
-const cheprasovColorsOptimized = cheprasovColors.map(color => {
-    //remove color name aliases
-    if((Array.from(color.name)).includes('(')) return {
-        name: color.name.substring(0, (color.name).indexOf('(')),
-        hex: color.hex 
-    }
-    return color
-})
-//collect names only
-const cheprasovColorsNamesArray = cheprasovColorsOptimized.map(
-    color => color.name
-)
-
-let chrigaColorsObjects = chrigaColors.map(
-    color => {
-        if(cheprasovColorsNamesArray.includes(color[1])){
-            return {name: color[1], hex: `#${color[0]}`}
+//CLEANUP data  
+const cheprasovColorsTrimmed = cheprasovColors.map(color => { 
+    if((Array.from(color.name)).includes('(')){
+        color = {
+            //remove color name aliases, inside brackets ()
+            name: color.name.substring(0, (color.name).indexOf('(') -1),
+            //remove # from hex code
+            hex: color.hex.substring(1)
         }
     }
+    return  {
+        name: color.name,
+        hex: color.hex.substring(1)
+    }
+})
+const chrigaColorsArray = chrigaColors.map(
+    color => ({
+        name: color[1],
+        hex: color[0]
+    })
 )
-//remove undefined objects
-chrigaColorsObjects = chrigaColorsObjects.filter( color => color !== undefined)
 
-const allColorsCapitalised = [...cheprasovColorsOptimized , ...chrigaColorsObjects]
-const allColors = allColorsCapitalised.map(
+//GATHER data
+const allColorsMixedCase = [...cheprasovColorsTrimmed , ...chrigaColorsArray]
+const allColors = allColorsMixedCase.map(
     color => ({name: (color.name).toLowerCase(), hex: color.hex})
 )
-for(let color of allColors) color.hex = (color.hex).substring(1)
 
-//CLEANUP data, remove duplicates       
-const databasePath = './allColorsSorted.mjs'
-//sort database/colors
-Promise.resolve(
-    appendDataToFile(databasePath, sortArrayOfObjects(allColors, 'name'), 'utf-8', appendFile),
-)
-.then( msg => console.info(msg) )
-.catch(err => console.error(err.message))
-
-//count lines
-exec(
-    `cat ${databasePath} | wc -l`, 
-    (error, stdout, stderr) =>{
-        if(error) return console.error(`exec error: ${error}`)
-        if(stderr) return console.error(`stderr: ${stderr}`)
-        return console.info(`DB file ${databasePath.toUpperCase()} cinsists of ${stdout} lines of data.`)
+//Database FILE PATHS
+const allColorsUnsortedPath = 'database/allColorsUnsorted.json'
+const allColorsSortedPath = 'database/allColorsSorted.json'
+const allColorsSortedUniqPath = 'database/allColorsSortedUniq.json'
+//Append unsorted data
+appendDataToFile(allColorsUnsortedPath, allColors, 'unsorted')
+.then( appendDataToFileMsg => confirmPositiveResult(appendDataToFileMsg) )
+//SORT 'unsorted' data
+.then(()=> sortArrayOfObjects( allColors, 'name'))
+//Append sorted data
+.then( sortedArrayOfColors => appendDataToFile(allColorsSortedPath, sortedArrayOfColors, 'sorted') )
+//confirm sorted data appended successfully
+.then( appendDataToFileMsg => {
+        confirmPositiveResult(appendDataToFileMsg)
+        return appendDataToFileMsg
     }
-);
-//remove duplicates in-place: check notes.txt
-[
-    `sort ${databasePath}  | uniq > ${databasePath}`,
-    //verify less lines after removing duplicates
-    `cat ${databasePath}  | wc -l`
-]
-.forEach(
-    command => {
-        exec(
-            command,
-            (error, stdout, stderr) =>{
-                if(error) return console.error(`exec error: ${error}`)
-                if(stderr) return console.error(`stderr: ${stderr}`)
-                return console.info(`stdout: ${stdout}`)
-            }
+)
+//remove duplicates
+.then(
+    () => {
+        //requires timeout due to upstream process latency
+        //modify delay to suit needs e.g 5e3, 1e4, 20000 etc (figure it out with trial and error)
+        const transformSortedObjectArrayToUniqArrayTimeout = setTimeout(
+            ()=>{
+                //the third argument 'delayInMilliSeconds' IS OPTIONAL, default value == 5e3 == 5s. 
+                //See file: "utilities\transformSortedObjectArrayToUniqArray.mjs" for more info
+                transformSortedObjectArrayToUniqArray(allColorsSortedPath, allColorsSortedUniqPath)
+
+                // RESTRUCTURE data into an array
+                const openingArrayBracketTimeout = setTimeout(
+                    ()=> {
+                        //insert array opening tag
+                        insertArrayBracket(allColorsSortedUniqPath, 'temporaryFile.json', 'o')
+
+                        //insert array closing tag
+                        const closingArrayBracketTimeout = setTimeout(
+                            ()=> {
+                                insertArrayBracket(allColorsSortedUniqPath, 'temporaryFile.json', 'c')
+
+                                //clear all timeouts/ garbage collection
+                                clearTimeout(openingArrayBracketTimeout)
+                                clearTimeout(closingArrayBracketTimeout)
+                                clearTimeout(transformSortedObjectArrayToUniqArrayTimeout)
+                            }, 5e3
+                        )
+                    }, 5e3
+                )
+            }, 5e3
         )
     }
 )
+.catch(err => console.error(err))

@@ -5,10 +5,11 @@ function trimHSL(hslVal, modificationFactorInputVal, modificationTargetEl){
     //insert new lightness in hsl
     const hslArray = Array.from(hslVal)
     hslArray.splice(lastSpaceCharacterPos, lastPercentageSignPos - lastSpaceCharacterPos, + modificationFactorInputVal)
+    //reflect color change in target element's border
     modificationTargetEl.style.borderColor = hslArray.join('')
     //show modified color info
     let hslArrayTrimmed =  [...hslArray]
-    //remove hsl prefix
+    //remove 'hsl' prefix
     hslArrayTrimmed.splice(0, 3)
     //remove brackets 
     hslArrayTrimmed.splice(0, 1)
