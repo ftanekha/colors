@@ -7,7 +7,9 @@ async function insertArrayBracket(fileToBeTransformedPath, tempFilePath = 'tempo
     //validate option (check data type and spelling)
     function isOptionCorrect(optionString){
         if(typeof optionString !== 'string') throw new TypeError('Invalid 3rd argument, "option". Must be type "string" !!')
-        if(optionString.toLowerCase() !== 'o' && optionString.toLowerCase() !== 'c') throw new SyntaxError('Invalid 3rd argument, "option".\nMust be "o", for "opemning tag" || "c" for "closing tag"!!')
+        //make option case insentive
+        optionString = optionString.toLowerCase()
+        if(optionString !== 'o' && optionString !== 'c') throw new SyntaxError('Invalid 3rd argument, "option".\nMust be "o", for "opemning tag" || "c" for "closing tag"!!')
         return true
     }
 

@@ -1,8 +1,6 @@
-
 import cheprasovColors from './apiData/cheprasovColors.json' assert { type: 'json' }
 import chrigaColors from './apiData/chrigaColors.json' assert { type: 'json' }
 import appendDataToFile from './utilities/appendDataToFile.mjs'
-// import runCLIcommand from './utilities/runCLIcommand.mjs'
 import sortArrayOfObjects from './utilities/sortArrayOfObjects.mjs'
 import confirmPositiveResult from './utilities/confirmPositiveResult.mjs'
 import transformSortedObjectArrayToUniqArray from './utilities/transformSortedObjectArrayToUniqArray.mjs'
@@ -41,15 +39,15 @@ const allColorsUnsortedPath = 'database/allColorsUnsorted.json'
 const allColorsSortedPath = 'database/allColorsSorted.json'
 const allColorsSortedUniqPath = 'database/allColorsSortedUniq.json'
 //Append unsorted data
-appendDataToFile(allColorsUnsortedPath, allColors, 'unsorted')
-.then( appendDataToFileMsg => confirmPositiveResult(appendDataToFileMsg) )
+appendDataToFile(allColorsUnsortedPath, allColors, 'u')
+.then( appendDataToFileMsg => confirmPositiveResult(appendDataToFileMsg, 'top') )
 //SORT 'unsorted' data
 .then(()=> sortArrayOfObjects( allColors, 'name'))
 //Append sorted data
-.then( sortedArrayOfColors => appendDataToFile(allColorsSortedPath, sortedArrayOfColors, 'sorted') )
+.then( sortedArrayOfColors => appendDataToFile(allColorsSortedPath, sortedArrayOfColors, 's') )
 //confirm sorted data appended successfully
 .then( appendDataToFileMsg => {
-        confirmPositiveResult(appendDataToFileMsg)
+        confirmPositiveResult(appendDataToFileMsg, 'bottom')
         return appendDataToFileMsg
     }
 )

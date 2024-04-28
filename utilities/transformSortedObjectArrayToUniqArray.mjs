@@ -6,7 +6,7 @@ const asyncExec = util.promisify(exec)
 async function transformSortedObjectArrayToUniqArray(dataSourceFilePath, dataDestinationFilePath) {
     try {
         const {stdout, stderr } = await asyncExec(`uniq ${dataSourceFilePath} > ${dataDestinationFilePath}`)
-        if(stderr) console.warn(`STDERR: ${stderr}`)
+        if(stderr) console.warn(`STDERR: ${stderr} ☹️`)
         
         const successMsg = `>> Array of Unique objects created successfully 😊 \n>> See: ${dataDestinationFilePath}`
         console.info(`STDOUT: ${stdout}\n${successMsg}`)

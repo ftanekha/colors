@@ -9,7 +9,7 @@ function writeDataToFilDataToFile(path, data, encoding, asyncWriteDataToFilFile)
     .catch(err => console.table(
         {
             Error: err.name,
-            Type:  err.message + '☹️' 
+            Type:  `${err.message} ☹️` 
         }
     ))
 }
