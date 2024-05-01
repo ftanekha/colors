@@ -1,15 +1,15 @@
-function displayAlternativeColorHexcodes(colorInfoArray, inputColorDisplay, colorIndex = 0 ){
-    console.log(colorIndex)
-   //HERE
+function displayAlternativeColorHexcodes(colorInfoArray, inputColorDisplay, colorIndex){
     //begin the presenation
     if(colorIndex >= colorInfoArray.length) colorIndex = 0
-    inputColorDisplay.style.backgroundColor = `#${(colorInfoArray[colorIndex]).hex}`
-    
+
+    let currentColorHexCode = `#${(colorInfoArray[colorIndex]).hex}`
+    inputColorDisplay.style.backgroundColor = currentColorHexCode
+    document.querySelector('#input-color-display-hexcode').textContent = currentColorHexCode
+
     const colorPresentationInterval = setTimeout(
         ()=> {
-             colorIndex++
             //recursion
-            displayAlternativeColorHexcodes(colorInfoArray, inputColorDisplay, colorIndex)
+            displayAlternativeColorHexcodes(colorInfoArray, inputColorDisplay, ++colorIndex)
         }, 2000
     )
     //stop the presentation when user clicks on the page

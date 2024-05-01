@@ -48,6 +48,7 @@ async function insertArrayBracket(fileToBeTransformedPath, tempFilePath = 'tempo
             const arrayBracket = option === 'o' ? 'Opening Bracket' : 'Closing Bracket'
             const successMsg = `>> ${arrayBracket} added successfully 😊 \n>> See: ${fileToBeTransformedPath}`
             console.info(`STDOUT: ${stdout}\n${successMsg}`)
+            console.info(`\nDATABASE ready!`)
         }catch(err){
             console.error(err)
         }

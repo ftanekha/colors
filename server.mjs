@@ -1,6 +1,10 @@
 import express from 'express'
 import cors from 'cors'
+import createAllColorsDatabase from './createAllColorsDatabase.mjs'
 import isSearchInputColorInDatabase from './utilities/isSearchInputColorInDatabase.mjs'
+
+//import database
+createAllColorsDatabase()
 
 const server = express()
 

@@ -85,9 +85,11 @@ body div#input-color-display {
   border-radius: 50%;
   outline: dashed gray 5px;
   background-color: white;
-  justify-content: center;
   font-weight: bold;
   color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 body div#input-color-display + p {
   text-align: center;

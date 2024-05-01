@@ -45,7 +45,7 @@ document.addEventListener(
                             //inform the user
                             alert(`This color has multiple hex codes associated with it.\n\nClick OK to begin the presentation inside the color wheel.\n\nTo stop the presentation, Click anywhere on the page. 😊`)
                             //show every color listed in the colorInfo array
-                            displayAlternativeColorHexcodes(colorInfo, inputColorDisplay)
+                            displayAlternativeColorHexcodes(colorInfo, inputColorDisplay, 0)
                             //turn on spinner-effect (uses CSS Keyframes)
                             spinnerEffect(inputColorDisplay)
                         }else{

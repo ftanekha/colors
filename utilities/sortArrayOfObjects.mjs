@@ -11,11 +11,16 @@ function sortArrayOfObjects(array, key = 'string'){
     return new Promise(
         (res, rej)=> {
             if(typeof key === 'string'){
-               res(
-                    array.sort(
-                        (a, b) => a[key].localeCompare(b[key])
-                    )
-               )
+                //only select colors with valid hex codes
+                array = array.filter(
+                    color => (color.hex).length === 3 || (color.hex).length === 6
+                )
+
+                res(
+                        array.sort(
+                            (a, b) => a[key].localeCompare(b[key])
+                        )
+                )
             }else{
                 rej(new TypeError('The argument for the "key" parameter must be of type string'))
             }
